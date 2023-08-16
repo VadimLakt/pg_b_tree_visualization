@@ -9,6 +9,9 @@
 ## Step-by-step
 
 1. Получить файл индекса.
+   1. Путь до файла индекса можно получить запросом: 
+   select current_setting('data_directory') || '/' || pg_relation_filepath('pg_depend_reference_index');
+   /var/lib/postgresql/13/main/base/16385/2806156197
 2. С помощью [pg_filedump](https://wiki.postgresql.org/wiki/Pg_filedump) и опций -i -f необходимо получить файл, который потом будет разбираться скриптом.
    1. Пример: pg_filedump -i -f 2806156197 > pgfiledump.txt
 3. С помощью скрипта pg_b_tree_visualization.py получить dot файл result.dot
@@ -36,4 +39,4 @@
 
 ## Ограничения
 1. Совсем поломанные индексы не получится визуализацировать. Необходимо проверить, чтобы файл сгенерированный [pg_filedump](https://wiki.postgresql.org/wiki/Pg_filedump) был содержательный
-2. Для работы программы требуется [pg_filedump](https://wiki.postgresql.org/wiki/Pg_filedump) и [graphviz](https://graphviz.org/)
+2. Для работы скрипта требуется [pg_filedump](https://wiki.postgresql.org/wiki/Pg_filedump) и [graphviz](https://graphviz.org/)
