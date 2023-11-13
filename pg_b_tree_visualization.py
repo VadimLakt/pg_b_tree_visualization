@@ -132,7 +132,7 @@ for cntNode, node in enumerate(nodes):
 
         f.write(
             "      </table>>" + "\n" +
-            "      fillcolor=" + fillcolor[cntNode % len(nodes)] + "\n" +
+            "      fillcolor=" + fillcolor[cntNode % len(fillcolor)] + "\n" +
             "    ]" + "\n"
         )
     f.write("  }" + "\n")
